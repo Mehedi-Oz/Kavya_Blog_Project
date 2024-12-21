@@ -12,9 +12,7 @@
                 <div class="card-body">
                     <div class="border p-3 rounded">
                         <h4 class="mb-0 text-uppercase text-center">Add Author Form</h4>
-                        {{session('message')}}
                         <hr/>
-
                         <form class="row g-3" action="{{route('new-author')}}" method="post"
                               enctype="multipart/form-data">
                             @csrf
@@ -38,6 +36,9 @@
                             <div class="col-12">
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary">Submit Author</button>
+                                    <div class="text-center">
+                                        {{session('message')}}
+                                    </div>
                                 </div>
                             </div>
                         </form>

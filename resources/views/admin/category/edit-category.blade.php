@@ -11,8 +11,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="border p-3 rounded">
-                        <h4 class="mb-0 text-uppercase text-center">Update Category Form</h6>
-                        {{session('message')}}
+                        <h4 class="mb-0 text-uppercase text-center">Update Category Form</h4>
+                        <div class="text-center">
+                            {{session('message')}}
+                        </div>
                         <hr/>
                         <form class="row g-3" action="{{route('update-category')}}" method="post"
                               enctype="multipart/form-data">
@@ -33,6 +35,9 @@
                             <div class="col-12">
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary">Update Category</button>
+                                    <div class="text-center">
+                                        {{session('message')}}
+                                    </div>
                                 </div>
                             </div>
                         </form>

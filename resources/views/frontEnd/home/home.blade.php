@@ -1,7 +1,7 @@
 @extends('frontEnd.master')
 
 @section('title')
-    Kavya Blog
+     PC Builder
 @endsection
 
 @section('content')
@@ -10,117 +10,50 @@
     <section class="banner-section">
         <div class="container">
             <div class="banner-carousel">
-                <div class="banner-item">
-                    <div class="card">
-                        <a href="single-layout-one.html"><img src="{{asset('front-end-asset')}}/images/baby-girl.jpg" class="card-img" alt="" /></a>
-                        <div class="card-img-overlay banner-text">
-                            <ul class="category-tag-list">
-                                <li class="category-tag-name">
-                                    <a href="#">Lifestyle</a>
-                                </li>
-                            </ul>
-                            <h5 class="card-title title-font">
-                                <a href="single-layout-one.html">Take the stress out with nature</a>
-                            </h5>
-                            <p class="card-text mb-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                                nostrum eum, cum ab iusto error totam quae nemo dicta nesciunt
-                                quo earum ipsam, ex aspernatur.
-                            </p>
-                            <a href="single-layout-one.html" class="btn btn-solid btn-read">Read More</a>
+                @foreach($blogs as $blog)
+                    <div class="banner-item">
+                        <div class="card">
+                            <a href=""><img src="{{asset($blog->image)}}" class="card-img" alt=""/></a>
+                            <div class="card-img-overlay banner-text">
+                                <ul class="category-tag-list">
+                                    <li class="category-tag-name">
+                                        <a href="#">{{$blog->category->category_name}}</a>
+                                    </li>
+                                </ul>
+                                <h5 class="card-title title-font">
+                                    <a href="{{route('details-blog', ['id'=>$blog->id])}}">{{$blog->slug}}</a>
+                                </h5>
+                                <p class="card-text mb-3">
+                                    {{$blog->title}}
+                                </p>
+                                <a href="{{route('details-blog', ['id'=>$blog->id])}}" class="btn btn-solid btn-read">Read
+                                    More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="banner-item">
-                    <div class="card">
-                        <a href="single-layout-one.html"><img src="{{asset('front-end-asset')}}/images/london.jpg" class="card-img" alt="" /></a>
-                        <div class="card-img-overlay banner-text">
-                            <ul class="category-tag-list">
-                                <li class="category-tag-name">
-                                    <a href="#">travel</a>
-                                </li>
-                            </ul>
-                            <h5 class="card-title title-font">
-                                <a href="single-layout-one.html">10 things you should not miss about London</a>
-                            </h5>
-                            <p class="card-text mb-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                                nostrum eum, cum ab iusto error totam quae nemo dicta nesciunt
-                                quo earum ipsam, ex aspernatur.
-                            </p>
-                            <a href="single-layout-one.html" class="btn btn-solid btn-read">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="banner-item">
-                    <div class="card">
-                        <a href="single-layout-one.html"><img src="{{asset('front-end-asset')}}/images/blonde-girl.jpg" class="card-img" alt="" /></a>
-                        <div class="card-img-overlay banner-text">
-                            <ul class="category-tag-list">
-                                <li class="category-tag-name">
-                                    <a href="#">Lifestyle</a>
-                                </li>
-                            </ul>
-                            <h5 class="card-title title-font">
-                                <a href="single-layout-one.html">Why alone time is a must for you</a>
-                            </h5>
-                            <p class="card-text mb-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                                nostrum eum, cum ab iusto error totam quae nemo dicta nesciunt
-                                quo earum ipsam, ex aspernatur.
-                            </p>
-                            <a href="single-layout-one.html" class="btn btn-solid btn-read">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="more-content-grid">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card simple-overlay-card mt-0">
-                            <a href="single-layout-one.html"><img src="{{asset('front-end-asset')}}/images/girl.jpg" class="card-img" alt="" /></a>
-                            <div class="card-img-overlay">
-                                <ul class="category-tag-list">
-                                    <li class="category-tag-name">
-                                        <a href="#">Lifestyle</a>
-                                    </li>
-                                </ul>
-                                <h5 class="card-title title-font">
-                                    <a href="single-layout-one.html">Lifestyle of woman in London</a>
-                                </h5>
+                    @foreach($blogs->reverse()->take(3) as $blog)
+                        <div class="col-md-4 py-2">
+                            <div class="card simple-overlay-card mt-0">
+                                <a href="{{route('details-blog', ['id'=>$blog->id])}}"><img
+                                        src="{{asset($blog->image)}}"
+                                        class="card-img" alt=""/></a>
+                                <div class="card-img-overlay">
+                                    <ul class="category-tag-list">
+                                        <li class="category-tag-name">
+                                            <a href="#">{{$blog->category->category_name}}</a>
+                                        </li>
+                                    </ul>
+                                    <h5 class="card-title title-font">
+                                        <a href="{{route('details-blog', ['id'=>$blog->id])}}">{{$blog->title}}</a>
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card simple-overlay-card mt-0">
-                            <a href="single-layout-one.html"><img src="{{asset('front-end-asset')}}/images/orange-bus.jpg" class="card-img" alt="" /></a>
-                            <div class="card-img-overlay">
-                                <ul class="category-tag-list">
-                                    <li class="category-tag-name">
-                                        <a href="#">Lifestyle</a>
-                                    </li>
-                                </ul>
-                                <h5 class="card-title title-font">
-                                    <a href="single-layout-one.html">10 ideas for travelling more</a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card simple-overlay-card mt-0">
-                            <a href="single-layout-one.html"><img src="{{asset('front-end-asset')}}/images/shoes.jpg" class="card-img" alt="" /></a>
-                            <div class="card-img-overlay">
-                                <ul class="category-tag-list">
-                                    <li class="category-tag-name">
-                                        <a href="#">Lifestyle</a>
-                                    </li>
-                                </ul>
-                                <h5 class="card-title title-font">
-                                    <a href="single-layout-one.html">Top 5 trekking destinations of the world</a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -134,62 +67,63 @@
                 <h2>Featured posts</h2>
             </div>
             <div class="row no-gutters">
-                <div class="col-md-3">
-                    <div class="card border-0 card-350">
-                        <a href="single-layout-one.html">
-                            <img src="{{asset('front-end-asset')}}/images/travel-man.jpg" class="card-img-top" alt="" />
-                        </a>
-                        <div class="card-body px-0">
-                            <ul class="category-tag-list">
-                                <li class="category-tag-name">
-                                    <a href="#">Travel</a>
-                                </li>
-                            </ul>
-                            <h5 class="card-title title-font">
-                                <a href="single-layout-one.html">
-                                    Top 10 mysterious places you didn't know
+                @foreach($blogs->random(3) as $index => $blog)
+                    @if($index == 0)
+                        <div class="col-md-3">
+                            <div class="card border-0 card-350">
+                                <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                    <img src="{{ asset($blog->image) }}" class="card-img-top" alt=""/>
                                 </a>
-                            </h5>
+                                <div class="card-body px-0">
+                                    <ul class="category-tag-list">
+                                        <li class="category-tag-name">
+                                            <a href="#">{{ $blog->category->category_name }}</a>
+                                        </li>
+                                    </ul>
+                                    <h5 class="card-title title-font">
+                                        <a href="{{route('details-blog', ['id'=>$blog->id])}}">{{ $blog->title }}</a>
+                                    </h5>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card mx-md-4 border-0 card-500">
-                        <a href="single-layout-one.html"><img src="{{asset('front-end-asset')}}/images/city-pink.jpg" class="card-img" alt="" /></a>
-                        <div class="card-img-overlay">
-                            <ul class="category-tag-list">
-                                <li class="category-tag-name">
-                                    <a href="#">Lifestyle</a>
-                                </li>
-                                <li class="category-tag-name">
-                                    <a href="#">Travel</a>
-                                </li>
-                            </ul>
-                            <h5 class="card-title title-font">
-                                <a href="single-layout-one.html">Take the stress out with nature</a>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card card-350 border-0">
-                        <a href="single-layout-one.html">
-                            <img src="{{asset('front-end-asset')}}/images/biker.jpg" class="card-img-top" alt="" />
-                        </a>
-                        <div class="card-body px-0">
-                            <ul class="category-tag-list">
-                                <li class="category-tag-name">
-                                    <a href="#">Lifestyle</a>
-                                </li>
-                            </ul>
-                            <h5 class="card-title title-font">
-                                <a href="single-layout-one.html">
-                                    Solo Traveller
+                    @elseif($index == 1)
+                        <div class="col-md-6">
+                            <div class="card mx-md-4 border-0 card-500">
+                                <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                    <img src="{{ asset($blog->image) }}" class="card-img" alt=""/>
                                 </a>
-                            </h5>
+                                <div class="card-img-overlay">
+                                    <ul class="category-tag-list">
+                                        <li class="category-tag-name">
+                                            <a href="#">{{ $blog->category->category_name }}</a>
+                                        </li>
+                                    </ul>
+                                    <h5 class="card-title title-font">
+                                        <a href="{{route('details-blog', ['id'=>$blog->id])}}">{{ $blog->title }}</a>
+                                    </h5>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    @else
+                        <div class="col-md-3">
+                            <div class="card card-350 border-0">
+                                <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                    <img src="{{ asset($blog->image) }}" class="card-img-top" alt=""/>
+                                </a>
+                                <div class="card-body px-0">
+                                    <ul class="category-tag-list">
+                                        <li class="category-tag-name">
+                                            <a href="#">{{ $blog->category->category_name }}</a>
+                                        </li>
+                                    </ul>
+                                    <h5 class="card-title title-font">
+                                        <a href="{{route('details-blog', ['id'=>$blog->id])}}">{{ $blog->title }}</a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>
@@ -205,108 +139,115 @@
                 <div class="col-md-7 col-lg-8">
                     <div class="posts-wrapper">
                         <div class="row">
-                            <div class="col-lg-8">
-                                <div class="card card-350">
-                                    <a href="single-layout-one.html">
-                                        <img src="{{asset('front-end-asset')}}/images/city-pink.jpg" class="card-img-top" alt="" />
-                                    </a>
-                                    <div class="card-body px-0">
-                                        <ul class="category-tag-list">
-                                            <li class="category-tag-name">
-                                                <a href="#">Travel</a>
-                                            </li>
-                                            <li class="category-tag-name">
-                                                <a href="#">Lifestyle</a>
-                                            </li>
-                                        </ul>
-                                        <h5 class="card-title title-font">
-                                            <a href="single-layout-one.html">
-                                                Remember before moving to a new city</a>
-                                        </h5>
+                            @foreach($blogs->random(5) as $index=>$blog)
+                                @if($index==0)
+                                    <div class="col-lg-8">
+                                        <div class="card card-350">
+                                            <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                <img src="{{asset($blog->image)}}"
+                                                     class="card-img-top" alt=""/>
+                                            </a>
+                                            <div class="card-body px-0">
+                                                <ul class="category-tag-list">
+                                                    <li class="category-tag-name">
+                                                        <a href="#">{{$blog->category->category_name}}</a>
+                                                    </li>
+                                                    {{--                                                    <li class="category-tag-name">--}}
+                                                    {{--                                                        <a href="#">Lifestyle</a>--}}
+                                                    {{--                                                    </li>--}}
+                                                </ul>
+                                                <h5 class="card-title title-font">
+                                                    <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                        {{$blog->title}}</a>
+                                                </h5>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card card-350">
-                                    <a href="single-layout-one.html">
-                                        <img src="{{asset('front-end-asset')}}/images/airport.jpg" class="card-img-top" alt="" />
-                                    </a>
-                                    <div class="card-body px-0">
-                                        <ul class="category-tag-list">
-                                            <li class="category-tag-name">
-                                                <a href="#">Travel</a>
-                                            </li>
-                                            <li class="category-tag-name">
-                                                <a href="#">Lifestyle</a>
-                                            </li>
-                                        </ul>
-                                        <h5 class="card-title title-font">
-                                            <a href="single-layout-one.html">
-                                                Travel more in 2020</a>
-                                        </h5>
+                                @elseif($index == 1)
+                                    <div class="col-lg-4">
+                                        <div class="card card-350">
+                                            <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                <img src="{{asset($blog->image)}}"
+                                                     class="card-img-top" alt=""/>
+                                            </a>
+                                            <div class="card-body px-0">
+                                                <ul class="category-tag-list">
+                                                    <li class="category-tag-name">
+                                                        <a href="#">{{$blog->category->category_name}}</a>
+                                                    </li>
+                                                </ul>
+                                                <h5 class="card-title title-font">
+                                                    <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                        {{$blog->title}}</a>
+                                                </h5>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <a href="single-layout-one.html">
-                                        <img src="{{asset('front-end-asset')}}/images/forest.jpg" class="card-img-top" alt="" />
-                                    </a>
-                                    <div class="card-body px-0">
-                                        <ul class="category-tag-list">
-                                            <li class="category-tag-name">
-                                                <a href="#">Travel</a>
-                                            </li>
-                                            <li class="category-tag-name">
-                                                <a href="#">Nature</a>
-                                            </li>
-                                        </ul>
-                                        <h5 class="card-title title-font">
-                                            <a href="single-layout-one.html">
-                                                You will get lost in these woods</a>
-                                        </h5>
+                                @elseif($index == 2)
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                <img src="{{asset($blog->image)}}"
+                                                     class="card-img-top"
+                                                     alt=""/>
+                                            </a>
+                                            <div class="card-body px-0">
+                                                <ul class="category-tag-list">
+                                                    <li class="category-tag-name">
+                                                        <a href="#">{{$blog->category->category_name}}</a>
+                                                    </li>
+                                                </ul>
+                                                <h5 class="card-title title-font">
+                                                    <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                        {{$blog->title}}</a>
+                                                </h5>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <a href="single-layout-one.html">
-                                        <img src="{{asset('front-end-asset')}}/images/cup.jpg" class="card-img-top" alt="" />
-                                    </a>
-                                    <div class="card-body px-0">
-                                        <ul class="category-tag-list">
-                                            <li class="category-tag-name">
-                                                <a href="#">Travel</a>
-                                            </li>
-                                        </ul>
-                                        <h5 class="card-title title-font">
-                                            <a href="single-layout-one.html">
-                                                How roaming around is good for you</a>
-                                        </h5>
+                                @elseif($index == 3)
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                <img src="{{asset($blog->image)}}"
+                                                     class="card-img-top"
+                                                     alt=""/>
+                                            </a>
+                                            <div class="card-body px-0">
+                                                <ul class="category-tag-list">
+                                                    <li class="category-tag-name">
+                                                        <a href="#">{{$blog->category->category_name}}</a>
+                                                    </li>
+                                                </ul>
+                                                <h5 class="card-title title-font">
+                                                    <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                        {{$blog->title}}</a>
+                                                </h5>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <a href="single-layout-one.html">
-                                        <img src="{{asset('front-end-asset')}}/images/coach.jpg" class="card-img-top" alt="" />
-                                    </a>
-                                    <div class="card-body px-0">
-                                        <ul class="category-tag-list">
-                                            <li class="category-tag-name">
-                                                <a href="#">Travel</a>
-                                            </li>
-                                            <li class="category-tag-name">
-                                                <a href="#">Lifestyle</a>
-                                            </li>
-                                        </ul>
-                                        <h5 class="card-title title-font">
-                                            <a href="single-layout-one.html">
-                                                Old and beautiful </a>
-                                        </h5>
+                                @elseif($index == 4)
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                <img src="{{asset($blog->image)}}"
+                                                     class="card-img-top"
+                                                     alt=""/>
+                                            </a>
+                                            <div class="card-body px-0">
+                                                <ul class="category-tag-list">
+                                                    <li class="category-tag-name">
+                                                        <a href="#">{{$blog->category->category_name}}</a>
+                                                    </li>
+                                                </ul>
+                                                <h5 class="card-title title-font">
+                                                    <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                        {{$blog->title}}</a>
+                                                </h5>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -316,134 +257,36 @@
                             <h5><i class="fas fa-circle"></i>Recent Posts</h5>
                         </div>
                         <div class="sidebar-content author-posts">
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-4 col-md-4">
-                                        <a href="single-layout-one.html">
-                                            <img src="{{asset('front-end-asset')}}/images/alone-house.jpg" class="card-img" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-8 col-md-8">
-                                        <div class="card-body">
-                                            <ul class="category-tag-list mb-0">
-                                                <li class="category-tag-name">
-                                                    <a href="#">Lifestyle</a>
-                                                </li>
-                                            </ul>
-                                            <h5 class="card-title title-font"><a href="single-layout-one.html">Abandon Houses</a>
-                                            </h5>
-                                            <div class="author-date">
-                                                <a class="date" href="#">
-                                                    <span>21 Dec, 2019</span>
-                                                </a>
+                            @foreach($blogs->random(5) as $blog)
+                                <div class="card mb-3">
+                                    <div class="row no-gutters">
+                                        <div class="col-4 col-md-4">
+                                            <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                                <img src="{{asset($blog->image)}}"
+                                                     class="card-img" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-8 col-md-8">
+                                            <div class="card-body">
+                                                <ul class="category-tag-list mb-0">
+                                                    <li class="category-tag-name">
+                                                        <a href="#">{{$blog->category->category_name}}</a>
+                                                    </li>
+                                                </ul>
+                                                <h5 class="card-title title-font"><a
+                                                        href="{{route('details-blog', ['id'=>$blog->id])}}">Pc
+                                                        Component</a>
+                                                </h5>
+                                                <div class="author-date">
+                                                    <a class="date" href="#">
+                                                        <span>{{date('g:i A, F j, Y', strtotime($blog->created_at))}}</span>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-4 col-md-4">
-                                        <a href="single-layout-one.html">
-                                            <img src="{{asset('front-end-asset')}}/images/time.jpg" class="card-img" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-8 col-md-8">
-                                        <div class="card-body">
-                                            <ul class="category-tag-list mb-0">
-                                                <li class="category-tag-name">
-                                                    <a href="#">Lifestyle</a>
-                                                </li>
-                                            </ul>
-                                            <h5 class="card-title title-font"><a href="single-layout-one.html">Making time for travel</a>
-                                            </h5>
-                                            <div class="author-date">
-                                                <a class="date" href="#">
-                                                    <span>21 Dec, 2019</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-4 col-md-4">
-                                        <a href="single-layout-one.html">
-                                            <img src="{{asset('front-end-asset')}}/images/beach-sea.jpg" class="card-img" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-8 col-md-8">
-                                        <div class="card-body">
-                                            <ul class="category-tag-list mb-0">
-                                                <li class="category-tag-name">
-                                                    <a href="#">Lifestyle</a>
-                                                </li>
-                                            </ul>
-                                            <h5 class="card-title title-font"><a href="single-layout-one.html">How writing has improved my
-                                                    daily life</a>
-                                            </h5>
-                                            <div class="author-date">
-                                                <a class="date" href="#">
-                                                    <span>21 Dec, 2019</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-4 col-md-4">
-                                        <a href="single-layout-one.html">
-                                            <img src="{{asset('front-end-asset')}}/images/taj.jpg" class="card-img" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-8 col-md-8">
-                                        <div class="card-body">
-                                            <ul class="category-tag-list mb-0">
-                                                <li class="category-tag-name">
-                                                    <a href="#">photography</a>
-                                                </li>
-                                            </ul>
-                                            <h5 class="card-title title-font"><a href="single-layout-one.html">Super easy ways to learn
-                                                    about
-                                                    photography</a>
-                                            </h5>
-                                            <div class="author-date">
-                                                <a class="date" href="#">
-                                                    <span>21 Dec, 2019</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-4 col-md-4">
-                                        <a href="single-layout-one.html">
-                                            <img src="{{asset('front-end-asset')}}/images/air-ballon.jpg" class="card-img" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-8 col-md-8">
-                                        <div class="card-body">
-                                            <ul class="category-tag-list mb-0">
-                                                <li class="category-tag-name">
-                                                    <a href="#">Travel</a>
-                                                </li>
-                                            </ul>
-                                            <h5 class="card-title title-font"><a href="single-layout-one.html">Fly above clouds</a>
-                                            </h5>
-                                            <div class="author-date">
-                                                <a class="date" href="#">
-                                                    <span>21 Dec, 2019</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -456,103 +299,45 @@
     <section class="popular-posts section-padding">
         <div class="container">
             <div class="section-title">
-                <h2>More from Kavya</h2>
+                <h2>More from Startech</h2>
             </div>
             <div class="row">
                 <div class="col-md-7 col-lg-8">
-                    <div class="card mb-4">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-md-4">
-                                <a href="single-layout-one.html">
-                                    <img src="{{asset('front-end-asset')}}/images/time.jpg" class="card-img" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul class="category-tag-list">
-                                        <li class="category-tag-name">
-                                            <a href="#">Lifestyle</a>
-                                        </li>
-                                    </ul>
-                                    <h5 class="card-title title-font"><a href="single-layout-one.html">Making time for travel</a>
-                                    </h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor
-                                        sit,
-                                        amet consectetur adipisicing elit. Sapiente, asperiores.<p>
-                                    <div class="author-date">
-                                        <a class="author" href="#">
-                                            <img src="{{asset('front-end-asset')}}/images/writer.jpg" alt="" class="rounded-circle" />
-                                            <span class="writer-name-small">Julie</span>
-                                        </a>
-                                        <a class="date" href="#">
-                                            <span>21 Dec, 2019</span>
-                                        </a>
+                    @foreach($blogs->random(3) as $blog)
+                        <div class="card mb-4">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-md-4">
+                                    <a href="{{route('details-blog', ['id'=>$blog->id])}}">
+                                        <img src="{{asset($blog->image)}}" class="card-img" alt="">
+                                    </a>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <ul class="category-tag-list">
+                                            <li class="category-tag-name">
+                                                <a href="#">{{$blog->category->category_name}}</a>
+                                            </li>
+                                        </ul>
+                                        <h5 class="card-title title-font"><a
+                                                href="{{route('details-blog', ['id'=>$blog->id])}}">{{$blog->title}}</a>
+                                        </h5>
+                                        <p class="card-text">{{substr($blog->description, 0, 100)}}
+                                        <p>
+                                        <div class="author-date">
+                                            <a class="author" href="#">
+                                                <img src="{{asset($blog->author->image)}}" alt=""
+                                                     class="rounded-circle"/>
+                                                <span class="writer-name-small">{{$blog->author->author_name}}</span>
+                                            </a>
+                                            <a class="date" href="#">
+                                                <span>{{date('g:i A, F j, Y', strtotime($blog->created_at))}}</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card mb-4">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-md-4">
-                                <a href="single-layout-one.html"> <img src="{{asset('front-end-asset')}}/images/alone-house.jpg" class="card-img"
-                                                                       alt=""></a>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul class="category-tag-list">
-                                        <li class="category-tag-name">
-                                            <a href="#">Lifestyle</a>
-                                        </li>
-                                    </ul>
-                                    <h5 class="card-title title-font"><a href="single-layout-one.html">Abandon houses</a></h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ipsum rem,
-                                        delectus deserunt consectetur saepe? Expedita sapiente rerum nostrum fuga non iure minima sunt
-                                        inventore.
-                                    <p>
-                                    <div class="author-date">
-                                        <a class="author" href="#">
-                                            <img src="{{asset('front-end-asset')}}/images/writer.jpg" alt="" class="rounded-circle" />
-                                            <span class="writer-name-small">Julie</span>
-                                        </a>
-                                        <a class="date" href="#">
-                                            <span>21 Dec, 2019</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-4">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-md-4">
-                                <a href="single-layout-one.html"><img src="{{asset('front-end-asset')}}/images/taj.jpg" class="card-img" alt=""></a>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <ul class="category-tag-list">
-                                        <li class="category-tag-name">
-                                            <a href="#">photography</a>
-                                        </li>
-                                    </ul>
-                                    <h5 class="card-title title-font"><a href="single-layout-one.html"> Super easy ways to learn
-                                            everything about
-                                            photography</a></h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ipsum rem,
-                                        delectus deserunt consectetur saepe? <p>
-                                    <div class="author-date">
-                                        <a class="author" href="#">
-                                            <img src="{{asset('front-end-asset')}}/images/writer.jpg" alt="" class="rounded-circle" />
-                                            <span class="writer-name-small">Julie</span>
-                                        </a>
-                                        <a class="date" href="#">
-                                            <span>21 Dec, 2019</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="col-md-5 col-lg-4">
                     <div class="recent-posts">
@@ -561,46 +346,16 @@
                         </div>
                         <div class="sidebar-content">
                             <ul class="sidebar-list">
-                                <li class="sidebar-item">
-                                    <div class="num-left">
-                                        1
-                                    </div>
-                                    <div class="content-right">
-                                        <a href="single-layout-one.html">Healthy Dieting Habits for any age</a>
-                                    </div>
-                                </li>
-                                <li class="sidebar-item">
-                                    <div class="num-left">
-                                        2
-                                    </div>
-                                    <div class="content-right">
-                                        <a href="single-layout-one.html"> 10 foods you should try in Kathmandu</a>
-                                    </div>
-                                </li>
-                                <li class="sidebar-item">
-                                    <div class="num-left">
-                                        3
-                                    </div>
-                                    <div class="content-right">
-                                        <a href="single-layout-one.html">Everything You Wanted to Know About Love Life</a>
-                                    </div>
-                                </li>
-                                <li class="sidebar-item">
-                                    <div class="num-left">
-                                        4
-                                    </div>
-                                    <div class="content-right">
-                                        <a href="single-layout-one.html">Yoga works only under these conditions</a>
-                                    </div>
-                                </li>
-                                <li class="sidebar-item">
-                                    <div class="num-left">
-                                        5
-                                    </div>
-                                    <div class="content-right">
-                                        <a href="single-layout-one.html">Top 10 mysterious places you didn't know</a>
-                                    </div>
-                                </li>
+                                @foreach($blogs->random(5) as $blog)
+                                    <li class="sidebar-item">
+                                        <div class="num-left">
+                                            1
+                                        </div>
+                                        <div class="content-right">
+                                            <a href="{{route('details-blog', ['id'=>$blog->id])}}">{{$blog->title}}</a>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -610,71 +365,23 @@
                         </div>
                         <div class="sidebar-content">
                             <div class="row no-gutters">
-                                <div class="col-6 col-lg-4">
-                                    <div class="image-item insta-item">
-                                        <a href="#"> <img src="{{asset('front-end-asset')}}/images/beautiful-girl.jpg" alt=""></a>
-                                        <a href="#">
-                                            <div class="image-hover">
-                                                <i class="fas fa-heart"></i>
-                                            </div>
-                                        </a>
+                                @foreach($blogs->random(6) as $blog)
+                                    <div class="col-6 col-lg-4">
+                                        <div class="image-item insta-item">
+                                            <a href="#"> <img src="{{$blog->image}}"
+                                                              alt=""></a>
+                                            <a href="#">
+                                                <div class="image-hover">
+                                                    <i class="fas fa-heart"></i>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 col-lg-4">
-                                    <div class="image-item insta-item">
-                                        <a href="#"> <img src="{{asset('front-end-asset')}}/images/lighthouse.jpg" alt=""></a>
-                                        <a href="#">
-                                            <div class="image-hover">
-                                                <i class="fas fa-heart"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-lg-4">
-                                    <div class="image-item insta-item">
-                                        <a href="#"><img src="{{asset('front-end-asset')}}/images/travel-man.jpg" alt=""></a>
-                                        <a href="#">
-                                            <div class="image-hover">
-                                                <i class="fas fa-heart"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-lg-4">
-                                    <div class="image-item insta-item">
-                                        <a href="#"> <img src="{{asset('front-end-asset')}}/images/blonde-girl.jpg" alt=""></a>
-                                        <a href="#">
-                                            <div class="image-hover">
-                                                <i class="fas fa-heart"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-lg-4">
-                                    <div class="image-item insta-item">
-                                        <a href="#"><img src="{{asset('front-end-asset')}}/images/biker.jpg" alt=""></a>
-                                        <a href="#">
-                                            <div class="image-hover">
-                                                <i class="fas fa-heart"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-lg-4">
-                                    <div class="image-item insta-item">
-                                        <a href="#"> <img src="{{asset('front-end-asset')}}/images/shoes.jpg" alt=""></a>
-                                        <a href="#">
-                                            <div class="image-hover">
-                                                <i class="fas fa-heart"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                @endforeach
                                 <div class="col-md-12">
                                     <div class="insta-link">
-                                        <a href="#" target="_blank" class=" btn-solid">Follow us <i class="fab fa-instagram"></i></a>
+                                        <a href="#" target="_blank" class=" btn-solid">Follow us <i
+                                                class="fab fa-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>

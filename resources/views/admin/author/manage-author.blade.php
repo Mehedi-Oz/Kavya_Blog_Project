@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('title')
-    Manage Author
+    Manage Authors
 @endsection
 
 @section('content')

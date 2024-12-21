@@ -77,9 +77,9 @@
                         </div>
                         <small class="mb-0">The Blog Section</small>
                     </div>
-                    <a href="" class="list-group-item"><i class="bi bi-list-columns"></i>Add
+                    <a href="{{route('add-blog')}}" class="list-group-item"><i class="bi bi-list-columns"></i>Add
                         Blog</a>
-                    <a href="" class="list-group-item"><i class="bi bi-list-columns-reverse"></i>Manage
+                    <a href="{{route('manage-blog')}}" class="list-group-item"><i class="bi bi-list-columns-reverse"></i>Manage
                         Blog</a>
                 </div>
             </div>

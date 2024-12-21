@@ -22,7 +22,7 @@ class AuthorController extends Controller
     public function manageAuthor()
     {
         return view('admin.author.manage-author', [
-            'authors' => Author::all()
+            'authors' => Author::orderby('author_name', 'asc')->get()
         ]);
     }
 

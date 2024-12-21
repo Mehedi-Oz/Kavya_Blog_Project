@@ -5,7 +5,7 @@
                 <div class="kavya-footer-intro">
                     <div class="footer-logo">
                         <a href="#">
-                            <h5 class="brand-name">Kavya</h5>
+                            <h5 class="brand-name">Pc Builder</h5>
                         </a>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corrupti a tenetur. Nobis labore quod
@@ -132,7 +132,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="footer-copyright">
-                <p>&copy;2019 Kavya. All rights reserved. Theme designed by <a href="#">CodeVibrant</a> </p>
+                <p>&copy;2019 Pc Builder. All rights reserved. Theme designed by <a href="#">CodeVibrant</a> </p>
             </div>
         </div>
     </div>

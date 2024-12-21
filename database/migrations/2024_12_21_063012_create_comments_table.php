@@ -11,17 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('authors', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('author_name');
-            $table->string('image');
-            $table->tinyInteger('status')->default(1)->comment('1: Published, 0: Unpublished');
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('blog_id');
+            $table->text('comment');
+            $table->unsignedBigInteger('status')->default(1);
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('authors');
+        Schema::dropIfExists('comments');
     }
 };
